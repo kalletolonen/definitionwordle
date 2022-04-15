@@ -6,8 +6,8 @@ thisWord = wordObject.word
 print(thisWord)
 blockArr = []
 wordArr = []
+guessArr = []
 guessing = True
-printed = False
 
 for i in thisWord:
     blockArr.append(chr(9608))
@@ -15,21 +15,16 @@ for i in thisWord:
     
 while guessing:
     print(blockArr)
-    guess = input("Guess a letter: ")
-    s = thisWord
-    c = guess
-    lst = []
+    guess = input("Guess the word: ")
 
-    for pos,char in enumerate(s):
-        if(char == c):
-            lst.append(pos)
-    
-    for i in lst:
-        blockArr.pop(i)
-        blockArr.insert(i, c)
+    letters = guess
+    for num, letter in enumerate(letters, start=0):
+        if wordArr[num] == letter:
+            blockArr.pop(num)
+            blockArr.insert(num, letter)
         
-        if chr(9608) not in blockArr:
-            print("You won!")
-            print("The definition of ",thisWord, "is:",wordObject.definition)
-            guessing = False
+    if chr(9608) not in blockArr:
+       print("You won!")
+       print("The definition of ",thisWord, "is:",wordObject.definition)
+       guessing = False
      

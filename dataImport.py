@@ -2,11 +2,7 @@ import json
 from pathlib import Path
 import os
 import random
-
-class Word:
-    def __init__(self, word, definition):
-        self.word = word
-        self.definition = definition
+from classes import Word
 
 def nextWord():
     dataDir = Path.home() 
