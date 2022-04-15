@@ -13,8 +13,8 @@ def nextWord():
         data = json.load(json_file)
    
     for i in data:
-        if ' ' not in i:
+        if ' ' not in i and '.' not in i and len(i) == 5:
             wordAndDef = Word(i, data[i]["meanings"][0]["def"])
             allWords.append(wordAndDef)
 
-    return allWords[random.randint(2,222)]
+    return allWords
