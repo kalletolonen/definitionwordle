@@ -6,4 +6,4 @@ some new words.
 
 # Projects used by this project
 
-https://github.com/zyedidia/micro/blob/master/runtime/help/copypaste.md
+https://github.com/wordset/wordset-dictionary
