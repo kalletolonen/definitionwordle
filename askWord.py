@@ -1,5 +1,7 @@
 from dataImport import nextWord
+from score import *
 import random
+from printScore import *
 
 def checker(guess, thisWord):
     guessArr = []
@@ -24,6 +26,7 @@ for i in range(0, len(mydictionary)):
 blockArr = []
 wordArr = []
 guessing = True
+playerQuit = False
 guesses = 1
 maxGuesses = 7
 noPrint = False
@@ -41,6 +44,7 @@ while guessing and guesses < maxGuesses:
 
     if guess == "q":
         guessing = False
+        playerQuit = True
     if len(guess) == len(wordArr) and guess in justWords:
         letters = guess
         guesses = guesses + 1
@@ -57,11 +61,22 @@ while guessing and guesses < maxGuesses:
             print("You word is not the right lenght.")
 
     if chr(9608) not in blockArr:
-        print("You won!")
+        winner(guesses-1)
+        stats(thisWord,guesses-1)
         print("The definition of", thisWord, "is:", wordObject.definition)
         guessing = False
         noPrint = True
 
-if noPrint == False:
-    print(
-        f"The correct word was: {thisWord} \nDefinition: {wordObject.definition}")
+if noPrint == False and playerQuit and guesses >= 2:
+    guesses = 7
+    stats(thisWord,guesses)
+    print(f"The correct word was: {thisWord} \nDefinition: {wordObject.definition}")
+elif playerQuit:
+    print(f"The correct word was: {thisWord} \nDefinition: {wordObject.definition}")
+
+try:
+    print('\n')
+    printScore()
+except:
+    print("No scores yet :/")
+
