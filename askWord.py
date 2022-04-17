@@ -1,16 +1,14 @@
 from dataImport import nextWord
 import random
 
-
 def checker(guess, thisWord):
     guessArr = []
     for l in guess:
         guessArr.append(l)
         if guess.find(l) != thisWord.find(l) and l in thisWord:
             index = guess.find(l)
-            l = l.upper()
             guessArr.pop(index)
-            guessArr.insert(index, l)
+            guessArr.insert(index, l.upper())
     return guessArr
 
 

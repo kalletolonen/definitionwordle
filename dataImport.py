@@ -1,17 +1,16 @@
 import json
 from pathlib import Path
 import os
-import random
 from classes import Word
 
 def nextWord():
-    dataDir = Path.home() 
+    dataDir = os.getcwd()
     abc = "abcdefghijklmnopqrstuzyx"
     allWords = []
 
     for l in abc:
         filename = l
-        filepath = os.path.join(dataDir,f"definitionwordle/data/{filename}.json")
+        filepath = os.path.join(dataDir,f"data/{filename}.json")
         
         with open(filepath) as json_file:
             data = json.load(json_file)
