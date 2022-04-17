@@ -1,8 +1,23 @@
 from dataImport import nextWord
 import random
 
+#def checker(guess, thisWord):
+#    for l in guess:
+#        if thisWord.count(l) <= guess.count(l):
+#            print(l,"is in the word (but not @ right index): ",thisWord.count(l))
+
+def checker(guess, thisWord):
+    for l in guess:
+        if guess.find(l) == thisWord.find(l):
+        	print(f"The letter {l} is in the right place")
+        if guess.find(l) < thisWord.find(l) and l in thisWord:
+        	print(f"The letter {l} is in the word, but at a bigger index")
+        if guess.find(l) > thisWord.find(l) and l in thisWord:
+                	print(f"The letter {l} is in the word, but at a smaller index")
+        
+        	
 mydictionary = nextWord()
-wordObject = mydictionary[random.randint(0,199)]
+wordObject = mydictionary[random.randint(0,len(mydictionary))]
 thisWord = wordObject.word
 print(thisWord) #for testing
 justWords = []
@@ -17,6 +32,7 @@ guessing = True
 guesses = 1
 maxGuesses = 7
 noPrint = False
+testing = True
 
 for i in thisWord:
     blockArr.append(chr(9608))
@@ -37,6 +53,7 @@ while guessing and guesses < maxGuesses:
             if wordArr[num] == letter:
                 blockArr.pop(num)
                 blockArr.insert(num, letter)
+        checker(guess,thisWord)
     elif guess not in justWords:
         if len(guess) == len(wordArr):
             print("Not in dictionary!")
