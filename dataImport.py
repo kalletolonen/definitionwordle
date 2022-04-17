@@ -7,8 +7,6 @@ from classes import Word
 def nextWord():
     dataDir = Path.home() 
     abc = "abcdefghijklmnopqrstuzyx"
-    #filename = "a"
-    #filepath = os.path.join(dataDir,f"definitionwordle/data/{filename}.json")
     allWords = []
 
     for l in abc:
