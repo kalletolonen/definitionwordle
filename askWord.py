@@ -3,7 +3,7 @@ from score import *
 import random
 from printScore import *
 
-def checker(guess, thisWord, wordArr):
+def checker(guess, thisWord, wordArr, wrongLetters):
     guessArr = []
     win = False
     for l in guess:
@@ -15,15 +15,17 @@ def checker(guess, thisWord, wordArr):
         elif guess.find(l) == thisWord.find(l):
             guessArr.pop(index)
             guessArr.insert(index, l.upper())
+        else:
+            wrongLetters.append(l)
     if guessArr == wordArr:
         win = True
-    return guessArr, win
+    return guessArr, win, wrongLetters
 
 
 mydictionary = nextWord()
 wordObject = mydictionary[random.randint(0, len(mydictionary))]
 thisWord = wordObject.word
-print(thisWord)  # for testing
+#print(thisWord)  # for testing
 justWords = []
 
 for i in range(0, len(mydictionary)):
@@ -32,6 +34,7 @@ for i in range(0, len(mydictionary)):
 winArr = []
 prevGuesses = []
 wordArr = []
+wrongLetters = []
 guessing = True
 playerQuit = False
 guesses = 1
@@ -53,10 +56,12 @@ while guessing and guesses < maxGuesses:
         letters = guess
         guesses = guesses + 1
         print("Right letter, right place = CAPS\nRight letter, wrong place = *")
-        guessArr, win = checker(guess, thisWord, wordArr)
+        guessArr, win, wrongLetters = checker(guess, thisWord, wordArr, wrongLetters)
         prevGuesses.append(guessArr)
+        if wrongLetters != "None":
+            print("Not in the word:\n ",wrongLetters)
         for i in prevGuesses:
-            print(i)
+                    print(i)
     elif guess not in justWords:
         if len(guess) == len(wordArr):
             print("Not in dictionary!")
