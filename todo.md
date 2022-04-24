@@ -8,5 +8,8 @@
 	-Make previous guesses print in a nice column  
 3.1. Tidy up code  
 	-Move functions to their own files  
-4. Make a graphical interface  
-5. Port to React/React Native  
+4. Port to React/React Native  
+	-Data imports
+	-Game logic
+	-Statistics
+	-Nice GUI
