@@ -1,4 +1,6 @@
 import './App.css';
+import AskWord from './AskWord';
+//import MenuMUI from "./MUI/MenuMUI";
 
 function App() {
 
@@ -25,14 +27,14 @@ for (var l in abc) {
 		
 }
 
-console.log(wordList[20])
+//console.log(wordList[20])
 
 
 
 
   return (
     <div className="App">
-    Howdy
+    <AskWord wordList={wordList}/>
     </div>
   );
 }
