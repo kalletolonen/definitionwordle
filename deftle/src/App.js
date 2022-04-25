@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
-import React, { useState, useEffect } from 'react';
 
 function App() {
 
-const list = []
-
-function alphabet() {
-	var abc = "abccdefghijklmnopqrstuxyz"
-	for (var i=0;i < abc.length; i++) {
-		list.push(abc[i])
-	}
+function Word(word, definition) {
+	this.word = word;
+	this.definition = definition;
 }
 
-alphabet()
-//console.log(list)
-const jsonData= require('./data/a.json'); 
+var abc = "abccdefghijklmnopqrstuxyz"
+var wordList = []
 
-console.log(jsonData)
+for (var l in abc) {
+	let path = './data/' + abc[l] + '.json'
+	//console.log(path)
+	const jsonData = require('' + path); 	
+	for (var i in jsonData){
+		
+		if (jsonData[i]['word'].length === 5){
+			const word = new Word(jsonData[i]['word'],jsonData[i]['meanings'][0]['def'])
+			//console.log(jsonData[i]['word'])
+			wordList.push(word)
+		}
+	}
+		
+}
+
+console.log(wordList[20])
+
+
 
 
   return (
