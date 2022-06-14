@@ -87,17 +87,3 @@ try:
     printScore()
 except:
     print("No scores yet :/")
-
-print "Content-Type: text/html"
-print ""
-print "<html>"
-print "<meta charset=\"utf-8\">"
-print "<a href=\"/index.html\">Takaisin alkuun</a>"
-print "<h2>Painoindeksisi on</h2>"
-print "<p>"
-print "Laskennassa käytetyt tiedot:<br>"
-print "<b>Pituus:</b> " "<br>"
-print "<b>Paino:</b> " "<br>"
-print "Painoindeksisi on: " "<br>"
-print "</p>"
-print "</html>"
