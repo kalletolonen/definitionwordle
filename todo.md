@@ -1,3 +1,5 @@
+test
+
 # TODO
 1. Make a python script that collects words from a dictionary  
 	-done
